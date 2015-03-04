@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Tax Statistics</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="design.css">
+</head>
+<body>
+    <p>{{ time }}, <small><a href="{{filter_url}}" target="_blank">JIRA filter</a>, <a href="2014.html">archive for 2014</a></small></p>
+    <table>
+        <thead>
+            <tr>
+                <th>Team</th>
+                <th class="number">Business</th>
+                <th class="number">Tax</th>
+                <th class="secondary number">Backend</th>
+                <th class="secondary number">Frontend</th>
+                <th class="secondary number">Dual</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for team in teams %}
+                {% set teams_loop = loop %}
+                <tr>
+                    <td>{{team}}</td>
+                    {% for i in teams[team] %}
+                        <td class="number{% if loop.index > 2 %} secondary{% endif %}">
+                            <span class="hang-wrapper">
+                                {{ i }}
+                                {% if loop.index == 1 and teams_loop.index == 1 %}<span class="hang">%</span>{% endif %}
+                            </span>
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>Average</td>
+                {% for i in avgs %}
+                    <td class="number{% if loop.index > 2 %} secondary{% endif %}">{{ i }}</td>
+                {% endfor %}
+            </tr>
+        </tfoot>
+    </table>
+
+    <div class="cards-wrapper">
+        {% for team in details %}
+            <dl>
+                <dt>{{ team }}</dt>
+
+                {% if details[team]['business'] %}
+                    <dd class="type">Business</dd>
+                    <dd>{% for i in details[team]['business'] %}<a target="_blank" href="https://{{ host }}/browse/{{i.key}}">{{i.key}} {{ i.summary }}</a> {% endfor %}</dd>
+                {% endif %}
+
+                {% if details[team]['backend'] %}
+                    <dd class="type">Tax Backend</dd>
+                    <dd>{% for i in details[team]['backend'] %}<a target="_blank" href="https://{{ host }}/browse/{{i.key}}">{{i.key}} {{ i.summary }}</a> {% endfor %}</dd>
+                {% endif %}
+
+                {% if details[team]['frontend'] %}
+                    <dd class="type">Tax Frontend</dd>
+                    <dd>{% for i in details[team]['frontend'] %}<a target="_blank" href="https://{{ host }}/browse/{{i.key}}">{{i.key}} {{ i.summary }}</a> {% endfor %}</dd>
+                {% endif %}
+
+                {% if details[team]['backfront'] %}
+                    <dd class="type">Tax Dual</dd>
+                    <dd>{% for i in details[team]['backfront'] %}<a target="_blank" href="https://{{ host }}/browse/{{i.key}}">{{i.key}} {{ i.summary }}</a> {% endfor %}</dd>
+                {% endif %}
+            </dl>
+        {% endfor %}
+    </div>
+
+    {#
+    <hr>
+
+    <dl>
+        <dt>Backend</dt>
+        <dd>{% for i in totals[0] %}<a target="_blank" href="https://{{ host }}/browse/{{i.key}}" title="{{i.summary}}">{{i.key}}</a> {% endfor %}</dd>
+    </dl>
+    <dl>
+        <dt>Frontend</dt>
+        <dd>{% for i in totals[1] %}<a target="_blank" href="https://{{ host }}/browse/{{i.key}}" title="{{i.summary}}">{{i.key}}</a> {% endfor %}</dd>
+    </dl>
+    <dl>
+        <dt>Dual</dt>
+        <dd>{% for i in totals[2] %}<a target="_blank" href="https://{{ host }}/browse/{{i.key}}" title="{{i.summary}}">{{i.key}}</a> {% endfor %}</dd>
+    </dl>
+    #}
+</body>
+</html>
+

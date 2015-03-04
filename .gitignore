@@ -1,0 +1,5 @@
+.idea
+config.py
+*.html
+nginx.conf
+*.pyc
