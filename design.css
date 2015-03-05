@@ -101,5 +101,5 @@ dl {
 }
     .hang {
         position: absolute;
-        right: -9px;
+        left: 100%;
     }
