@@ -52,8 +52,8 @@ def compact(issue):
     issue = issue['key']
     is_business = 'tax' not in _labels
     is_backend = 'tax' in _labels and 'frontend' not in _labels
-    is_frontend = 'frontend' in _labels and 'backend' not in _labels
-    is_backfront = 'frontend' in _labels and 'backend' in _labels
+    is_frontend = 'tax' in _labels and 'frontend' in _labels and 'backend' not in _labels
+    is_backfront = 'tax' in _labels and 'frontend' in _labels and 'backend' in _labels
 
     return compact_issue(issue, summary, team, sp, is_business, is_backend, is_frontend, is_backfront)
 
