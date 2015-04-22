@@ -25,6 +25,7 @@ table {
     border: 0;
     border-collapse: collapse;
     margin-bottom: 2em;
+    margin-left: -15px;
 }
     th, td {
         text-align: left;
@@ -32,10 +33,10 @@ table {
         padding: 6px 25px;
     }
         th:first-child, td:first-child {
-            padding-left: 0 !important;
+            padding-left: 15px !important;
         }
         th:last-child, td:last-child {
-            padding-right: 0 !important;
+            padding-right: 15px !important;
         }
 
     th {
@@ -60,6 +61,14 @@ table {
         color: #777;
         padding-left: 15px;
         padding-right: 15px;
+    }
+
+    tr.high {
+        background-color: #ffffe3;
+    }
+
+    tr.highest {
+        background-color: #fdd;
     }
 
 .cards-wrapper {

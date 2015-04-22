@@ -22,7 +22,15 @@
         <tbody>
             {% for team in teams %}
                 {% set teams_loop = loop %}
-                <tr>
+                {% if team == 'Marketing' %}
+                    {% set high_warning = 30 %}
+                    {% set highest_warning = 25 %}
+                {% else %}
+                    {% set high_warning = 40 %}
+                    {% set highest_warning = 30 %}
+                {% endif %}
+
+                <tr{% if teams[team][1] <= highest_warning %} class="highest"{% elif teams[team][1] <= high_warning %} class="high"{% endif %}>
                     <td>{{team}}</td>
                     {% for i in teams[team] %}
                         <td class="number{% if loop.index > 2 %} secondary{% endif %}">
