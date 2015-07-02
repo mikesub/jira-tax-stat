@@ -8,6 +8,7 @@
 </head>
 <body>
     <p>{{ time }}, <small><a href="{{filter_url}}" target="_blank">JIRA filter</a>, <a href="2014.html">archive for 2014</a></small></p>
+    <div class="table-wrapper">
     <table>
         <thead>
             <tr>
@@ -52,6 +53,7 @@
             </tr>
         </tfoot>
     </table>
+    </div>
 
     <div class="cards-wrapper">
         {% for team in details %}
