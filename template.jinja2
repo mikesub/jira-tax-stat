@@ -23,7 +23,7 @@
         <tbody>
             {% for team in teams %}
                 {% set teams_loop = loop %}
-                {% if team == 'Marketing' %}
+                {% if team == 'Marketing' or team == 'API' %}
                     {% set high_warning = 30 %}
                     {% set highest_warning = 25 %}
                 {% else %}
