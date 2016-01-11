@@ -34,7 +34,7 @@ def json_by_url(url):
     print 'requesting {}'.format(url)
     request = urllib2.Request(url)
     request.add_header('Authorization',
-                       'Basic {0}'.format(base64.encodestring('{0}:{1}'.format(config.username, config.password))))
+                       'Basic {0}'.format(base64.b64encode('{0}:{1}'.format(config.username, config.password))))
     t = time.time()
     res = urllib2.urlopen(request)
     print time.time() - t
