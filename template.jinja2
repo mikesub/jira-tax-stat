@@ -13,7 +13,8 @@
             <a href="{{filter_url}}" target="_blank">JIRA filter</a>,
             archive for:
             <a href="2014.html">2014</a>,
-            <a href="2015.html">2015</a>
+            <a href="2015.html">2015</a>,
+            <a href="2016.html">2016</a>
         </small>
     </p>
     <div class="table-wrapper">
@@ -40,8 +41,8 @@
                     {% set highest_warning = 30 %}
                 {% endif %}
                 #}
-                {% set high_warning = 40 %}
-                {% set highest_warning = 30 %}
+                {% set high_warning = 26 %}
+                {% set highest_warning = 24 %}
 
                 <tr{% if teams[team][1] <= highest_warning %} class="highest"{% elif teams[team][1] <= high_warning %} class="high"{% endif %}>
                     <td>{{team}}</td>
