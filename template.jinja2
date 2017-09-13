@@ -32,9 +32,12 @@
         <tbody>
             {% for team in teams %}
                 {% set teams_loop = loop %}
-                {% if team == 'iOS' or team == 'Android' %}
+                {% if team in ['iOS', 'Android'] %}
                     {% set high_warning = 17 %}
                     {% set highest_warning = 15 %}
+                {% elif team in ['TMS', 'Talantix'] %}
+                    {% set high_warning = 13 %}
+                    {% set highest_warning = 11 %}
                 {% else %}
                     {% set high_warning = 26 %}
                     {% set highest_warning = 24 %}
